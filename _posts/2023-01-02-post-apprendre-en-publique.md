@@ -1,3 +1,5 @@
+# Apprendre en publique
+
 > Note: Traduction de [Learn in public](https://www.swyx.io/learn-in-public/) by Shawn Wang
 
 Si il y a une règle d'or, c'est celle là donc je commencerai par ça. Toutes les autres règles sont plus ou moins construites à partir de cette règle.
