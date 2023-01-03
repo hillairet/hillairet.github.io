@@ -1,14 +1,16 @@
-# Apprendre en public
+---
+title: "Apprendre en public"
+header:
+  image: /assets/images/headers/public-speaking_unsplash.jpg
+---
 
-> Note: Traduction de [Learn in public](https://www.swyx.io/learn-in-public/) by Shawn Wang
+> Note: Traduction de [Learn in public](https://www.swyx.io/learn-in-public/) écrit par Shawn Wang
 
-S'il y a une règle d'or, c'est celle-là donc je commencerai par ça. Toutes les autres règles sont plus ou moins construites à partir de cette règle.
-
-Vous savez déjà que vous n'aurez jamais fini d'apprendre. Mais la plupart des gens « apprennent en privé », en secret. Ils consomment l'information sans en créer eux-mêmes. Ce n'est pas un problème en soi, mais nous sommes là pour voir comment attendre le meilleur niveau possible.
+Vous savez déjà que vous n'aurez jamais fini d'apprendre. Mais la plupart des gens « apprennent en privé », en secret. Ils consomment l'information sans en créer eux-mêmes. Ce n'est pas un problème en soi, mais nous sommes là pour voir comment atteindre le meilleur niveau possible.
 Je parle d'une méthode pour apprendre en profondeur les choses en créant du contenu :
 * Écrire des blogs, des tutoriels et des fiches.
 * Parler à des réunions publiques comme des meetups ou des conférences.
-* Poser et répondres à des questions sur Stackoverflow ou Reddit. Évitez les communautés fermées comme Slack ou Discord, car elles ne sont pas publiques.
+* Poser et répondre à des questions sur Stackoverflow ou Reddit. Évitez les communautés fermées comme Slack ou Discord, car elles ne sont pas publiques.
 * Créer des vidéos Youtube ou des streams sur Twitch.
 * Commencer une newsletter.
 * Dessiner ([Les gens](https://arkwright.github.io/scaling-react-server-side-rendering.html) [adorent](https://wizardzines.com/) [les dessins](https://code-cartoons.com/) !)
@@ -28,7 +30,7 @@ Et vous croyez que ça suffit ? Ne vous arrêtez pas là :
 
 Si vous êtes fatigué de créer des petits trucs, commencez à accumuler une base de connaissances permanente qui grandira au fur et mesure. Distribuez vos connaissances en Open Source ! À chaque étape de votre apprentissage, *documentez ce que vous avez fait et les problèmes que vous avez résolus.*
 
-Le sous-titre de cette règle est simplement : **Faites de votre mieux pour être correct, mais ne vous inquiétez pas si vous faites des erreurs**. Encore et encore. Si vous n'êtes pas à l'aise, que vous vous sentez comme un imposteur, très bien. Cela veut dire que vous vous surpassez. N'imaginez pas que vous savez tout, mais faites de votre mieux, et laissez l'internet vos corriger quand vous vous tromperez inévitablement un jour. Ne craignez pas de vous exposer.
+Le sous-titre de cette approche est simplement : **Faites de votre mieux pour être correct, mais ne vous inquiétez pas si vous faites des erreurs**. Encore et encore. Si vous n'êtes pas à l'aise, que vous vous sentez comme un imposteur, très bien. Cela veut dire que vous vous surpassez. N'imaginez pas que vous savez tout, mais faites de votre mieux, et laissez l'internet vos corriger quand vous vous tromperez inévitablement un jour. Ne craignez pas de vous exposer.
 
 **Les gens pensent que vous êtes nul ?** Très bien. Vous êtes d'accord. Demandez-leur de vous expliquer en détail pourquoi vous êtes nul. Vous voulez croire que vous êtes bon ou vous voulez **être** bon? Pas d'objection, pas d'amour propre blessé. Retournez chez vous et allez leur prouver qu'ils ont tort. Évidemment s'ils sont injurieux, ignorez les.
 
@@ -40,7 +42,7 @@ Vous vous demandez: « Avec autant de développeurs débutants partout, pourquoi
 
 **Eh bien parce que vous apprenez en public.** En vous conseillant, ils enseignent à un groupe bien plus large. Vous amplifiez leur portée. Vous avez une chose qu'ils n'ont pas: un esprit de débutant. Vous voyez comment ça marche ?
 
-À un moment ou un autre, vous allez demander de l'aide à cause de la quantité de contenu que vous produisez. Près 80% des développeurs travaillent dans l'ombre, ils n'écrivent rien, ne parlent pas en public, et ne participant pas aux discussions techniques en public. Mais vous si. Vous devez être un expert, pas vrai? Ne leur dites pas que vous ne l'êtes pas. Répondez du mieux que vous pouvez, et si vous êtes coincé ou que vous avez tort, envoyez-les vers vos mentors.
+À un moment ou un autre, vous allez demander de l'aide à cause de la quantité de contenu que vous produisez. Près de 80% des développeurs travaillent dans l'ombre, ils n'écrivent rien, ne parlent pas en public, et ne participent pas aux discussions techniques en public. Mais vous si. Vous devez être un expert, pas vrai? Ne leur dites pas que vous ne l'êtes pas. Répondez du mieux que vous pouvez, et si vous êtes coincé ou que vous avez tort, envoyez-les vers vos mentors.
 
 Au bout d'un moment vous êtes à court de mentors et vous résolvez vos problèmes par vous-même. En revanche, vous continuez à publier. Vous voyez comment ça marche?
 
