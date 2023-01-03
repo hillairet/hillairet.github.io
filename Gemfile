@@ -3,6 +3,10 @@ source "https://rubygems.org"
 gem "github-pages", group: :jekyll_plugins
 
 gem "tzinfo-data"
+gem "sdbm"
+gem "webrick"
+gem "net-telnet"
+gem "xmlrpc"
 gem "wdm", "~> 0.1.0" if Gem.win_platform?
 
 # If you have any plugins, put them here!
