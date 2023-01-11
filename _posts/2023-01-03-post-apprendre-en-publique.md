@@ -6,7 +6,11 @@ header:
   caption: "Photo credit: [**Unsplash**](https://unsplash.com)"
 ---
 
-> Note: Traduction de [Learn in public](https://www.swyx.io/learn-in-public/) écrit par Shawn Wang
+*Cet article est une traduction de [Learn in public](https://www.swyx.io/learn-in-public/) écrit par Shawn Wang.*
+
+*Un grand merci à [Sean Bailly](https://twitter.com/seanbailly) pour avoir lu et corrigé cette article.*
+
+---
 
 Vous savez déjà que vous n'aurez jamais fini d'apprendre. Mais la plupart des gens « apprennent en privé », en secret. Ils consomment l'information sans en créer eux-mêmes. Ce n'est pas un problème en soi, mais nous sommes là pour voir comment atteindre le meilleur niveau possible.
 Je parle d'une méthode pour apprendre en profondeur les choses en créant du contenu :
