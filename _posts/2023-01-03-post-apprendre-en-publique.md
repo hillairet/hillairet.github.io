@@ -8,7 +8,7 @@ header:
 
 *Cet article est une traduction de [Learn in public](https://www.swyx.io/learn-in-public/) écrit par Shawn Wang.*
 
-*Un grand merci à [Sean Bailly](https://twitter.com/seanbailly) pour avoir lu et corrigé cette article.*
+*Un grand merci à [Sean Bailly](https://twitter.com/seanbailly) pour avoir lu et corrigé cet article.*
 
 ---
 
