@@ -12,7 +12,7 @@ While I have always been learning things here and there leading to some basic
 constant learning, I have come to realize the importance of being proactive
 about constant learning and I made it one of my top priorities in life.
 There is no better way to learn than to teach
-(see [Feynman Learning](https://blog.doist.com/feynman-technique/).
+(see [Feynman Learning](https://blog.doist.com/feynman-technique/)).
 Therefore I'll be the first to benefit from what I write about.
 The first but hopefully not the only one.
 
