@@ -3,6 +3,23 @@ permalink: /about/
 title: "About"
 ---
 
-Tempor velit sint sunt ipsum tempor enim ad qui ullamco. Est dolore anim ad velit duis dolore minim sunt aliquip amet commodo labore. Ut eu pariatur aute ea aute excepteur laborum. Esse ea esse excepteur minim mollit qui cillum excepteur ex dolore magna. Labore deserunt fugiat incididunt incididunt sint ea. Consequat dolore aute laboris quis proident quis non et est consectetur ex eiusmod sit culpa.
+Two goals can simply summarize the purpose of this blog:
 
-Cupidatat ea do et in excepteur in. Ad nostrud ut est esse eu duis ea sunt eiusmod. Aliquip tempor veniam sint elit fugiat. Velit incididunt laboris amet incididunt labore dolore irure velit excepteur commodo deserunt laborum. Consectetur eu fugiat veniam veniam Lorem labore magna eiusmod. Ea occaecat reprehenderit pariatur consectetur minim labore ut aliquip.
+* Learning
+* Sharing knowledge
+
+While I have always been learning things here and there leading to some basic
+constant learning, I have come to realize the importance of being proactive
+about constant learning and I made it one of my top priorities in life.
+There is no better way to learn than to teach
+(see [Feynman Learning](https://blog.doist.com/feynman-technique/).
+Therefore I'll be the first to benefit from what I write about.
+The first but hopefully not the only one.
+
+Knowledge is humanity's most important resource. With knowledge we make more
+amazing food (Camembert anyone?), build cities (Have you been to Tokyo?),
+cure diseases (bye bye small pox!), and overall improve our lives
+(what would life be without a snuggy?).
+As such, it is a common good and must be proactively shared. The internet
+has created the best tool to share knowledge to date, we must now keep
+filling it with what we have.
