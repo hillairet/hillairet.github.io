@@ -2,9 +2,10 @@ version: "3.8"
 
 services:
   blog:
-    image: jekyll/jekyll
-    command: "jekyll serve"
+    build: ./
+    command: "jekyll serve --livereload"
     ports:
       - "[::1]:4000:4000"
+      - "[::1]:35729:35729"
     volumes:
-      - "$PWD:/srv/jekyll:Z"
+      - "$PWD:/srv/jekyll"
