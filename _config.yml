@@ -43,6 +43,8 @@ exclude:
   - README.md
   - Gemfile
   - Gemfile.lock
+  - canadian-citizenship-test/README.md
+  - canadian-citizenship-test/LICENSE
 #   - node_modules
 #   - vendor/bundle/
 #   - vendor/cache/

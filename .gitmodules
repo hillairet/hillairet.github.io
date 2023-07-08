@@ -1,0 +1,3 @@
+[submodule "canadian-citizenship-test"]
+	path = canadian-citizenship-test
+	url = git@github.com:hillairet/study-4-canadian-citizenship-test.git
