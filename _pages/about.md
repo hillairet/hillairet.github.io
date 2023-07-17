@@ -1,7 +1,16 @@
 ---
 permalink: /about/
 title: "About"
+header:
+  image: /assets/images/headers/2023-07-1194677324-istock_puzzle-to-solution.jpg
+  image_description: "finding solution for a problem, analysis concept with top view of jigsaw puzzle pieces"
+  caption: "Photo credit: [**iStock**](https://istock.com)"
 ---
+
+> “Give me six hours to chop down a tree and I will spend the first four sharpening the axe.” 
+>
+> —Abraham Lincoln
+
 
 Two goals can simply summarize the purpose of this blog:
 

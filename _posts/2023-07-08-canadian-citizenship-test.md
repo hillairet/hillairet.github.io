@@ -4,6 +4,7 @@ header:
   image: /assets/images/headers/2023-07-C2keINMOhIE-unsplash_canada-flag-in-ottawa.jpg
   image_description: "Canadian flag with the Peace Tower of the Parliament building in the background"
   caption: "Photo credit: [**Unsplash**](https://unsplash.com)"
+  teaser: /assets/images/teasers/2023-07-C2keINMOhIE-unsplash_canada-flag-in-ottawa.jpg
 ---
 
 You just received it: The "Notice to Appear" email providing you with the date for your Canadian Citizenship Test.

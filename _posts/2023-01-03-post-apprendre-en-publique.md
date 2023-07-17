@@ -1,9 +1,10 @@
 ---
 title: "Apprendre en public"
 header:
-  image: /assets/images/headers/public-speaking_unsplash.jpg
+  image: /assets/images/headers/2023-01-Q7wGvnbuwj0-unsplash_public-speaking.jpg
   image_description: "Public speech with a microphone in a restaurant"
   caption: "Photo credit: [**Unsplash**](https://unsplash.com)"
+  teaser: /assets/images/teasers/2023-01-Q7wGvnbuwj0-unsplash_public-speaking.jpg
 ---
 
 *Cet article est une traduction de [Learn in public](https://www.swyx.io/learn-in-public/) écrit par Shawn Wang.*
