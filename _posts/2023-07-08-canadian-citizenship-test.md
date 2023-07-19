@@ -5,6 +5,7 @@ header:
   image_description: "Canadian flag with the Peace Tower of the Parliament building in the background"
   caption: "Photo credit: [**Unsplash**](https://unsplash.com)"
   teaser: /assets/images/teasers/2023-07-C2keINMOhIE-unsplash_canada-flag-in-ottawa.jpg
+excerpt: Do you need help studying for the Canadian Citizenship test? Explore this chronological and complete timeline of Canada's history.
 ---
 
 You just received it: The "Notice to Appear" email providing you with the date for your Canadian Citizenship Test.

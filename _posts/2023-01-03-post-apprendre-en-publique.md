@@ -5,6 +5,7 @@ header:
   image_description: "Public speech with a microphone in a restaurant"
   caption: "Photo credit: [**Unsplash**](https://unsplash.com)"
   teaser: /assets/images/teasers/2023-01-Q7wGvnbuwj0-unsplash_public-speaking.jpg
+excerpt: Apprendre continuellement par soi-même a ses limites. Apprenez en public pour atteindre le niveau supérieur.
 ---
 
 *Cet article est une traduction de [Learn in public](https://www.swyx.io/learn-in-public/) écrit par Shawn Wang.*

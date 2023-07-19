@@ -5,6 +5,7 @@ header:
   image_description: "Hands stacking coins in three piles"
   caption: "Photo credit: [**Unsplash**](https://unsplash.com)"
   teaser: /assets/images/teasers/2023-02-jpqyfK7GB4w-unsplash_coins-budget.jpg
+excerpt: Stop wasting time on mundane daily tasks. Instead automate the mundane away with Todoist and habit stacks.
 ---
 
 Everything we do takes time and energy. Even if it's a tiny amount, there is a cost to
