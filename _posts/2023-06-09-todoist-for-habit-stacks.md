@@ -158,4 +158,4 @@ the fun stuff doesn't get sidelined either!
 
 ---
 
-*Thank you to [Nigel Leadbitter](https://www.linkedin.com/in/nigel-leadbitter-1b0414151/) for reviewing and providing very useful feedback.*
+*Thank you to [Nigel Leadbitter](https://www.linkedin.com/in/nigel-leadbitter-1b0414151/) for reviewing this article and providing very useful feedback.*
