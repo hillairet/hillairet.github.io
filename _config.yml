@@ -14,11 +14,13 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 title: Sharpen the Saws
+subtitle: “Give me six hours to chop down a tree and I will spend the first four sharpening the axe.” —Abraham Lincoln
 email:
 description: >- # this means to ignore newlines until "baseurl:"
   Just like sharpening a saw, improving yourself takes time, energy and focus.
   In a world as complex as ours, having multiple skills to offer is an advantage.
   So don't wait and start sharpening your saws today!
+url: https://sharpenthesaws.com
 github_username: hillairet
 minimal_mistakes_skin: air
 search: true
