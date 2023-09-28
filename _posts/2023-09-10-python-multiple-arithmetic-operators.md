@@ -1,11 +1,10 @@
 ---
 title: "The surprising behavior of multiple *, /, +, and - operators in Python"
 header:
-  image: /assets/images/headers/2023-04-2RRq1BHPq4E-unsplash_rodin_thinker.jpg
-  image_description: "Rodin's The Thinker"
-  caption: "Photo credit: [**Unsplash**](https://unsplash.com)"
-  teaser: /assets/images/teasers/2023-04-2RRq1BHPq4E-unsplash_rodin_thinker.jpg
-excerpt: Let's explore this strange quirk of the Python language and its unexpected consequence.
+  image: /assets/images/headers/2023-09-28_pythons-weird-arithmetic.png
+  image_description: "An example of Python's weird arithmetic"
+  teaser: /assets/images/teasers/2023-09-28_pythons-weird-arithmetic.png
+excerpt: Let's explore this strange quirk of the Python language and learn from it.
 ---
 
 All programming languages have some quirks and strange behavior.
@@ -135,6 +134,6 @@ They might give the same result most of the time but at the end the interpreter 
 
 Being able to use multiple `+` and `-` operators in a row is most likely a side effect rather than an intended feature in Python.
 In any case I would strongly recommend to refrain from using this feature, even just for the fun.
-Most of the time it works as is `+` and `-` could be replaced by `*(+1)*` and `*(-1)*` respectively but at least for the operator `//` this is just not the case.
+Most of the time it works as is `+` and `-` could be replaced by `* (+1)` and `* (-1)` respectively but at least for the operator `//` this is just not the case.
 
 However using this quirk of Python was a nice way to learn and explore the operator precedence!
