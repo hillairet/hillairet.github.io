@@ -1,5 +1,5 @@
 ---
-title: "The surprising behavior of multiple *, /, +, and - operators in Python"
+title: "The surprising behavior of multiple + and - operators in Python"
 header:
   image: /assets/images/headers/2023-09-28_pythons-weird-arithmetic.png
   image_description: "An example of Python's weird arithmetic"
