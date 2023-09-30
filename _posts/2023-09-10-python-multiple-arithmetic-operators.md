@@ -1,5 +1,5 @@
 ---
-title: "The surprising behavior of multiple + and - operators in Python"
+title: "Python's arithmetic is weird: 1 +-+-+ 1 == 2"
 header:
   image: /assets/images/headers/2023-09-28_pythons-weird-arithmetic.png
   image_description: "An example of Python's weird arithmetic"
@@ -9,12 +9,22 @@ excerpt: Let's explore this strange quirk of the Python language and learn from 
 
 All programming languages have some quirks and strange behavior.
 Python is certainly no exception.
-I was however quite surprised recently when I found out that Python allows multiple `+` and `-` in a row.
-Let's explore this behavior and learn about order of operation from it.
+I was quite surprised recently when I found out that Python allows multiple `+` and `-` in a row.
+
+```python
+>>> 1 +-+-+ 1
+2
+```
+
+That's right!
+This is valid arithmetic in Python.
+
+Now you may think that you can safely stick it into your next commit at work to stump your code reviewer.
+Before you do, let me show you that it does not always behave as expected.
 
 # Use as many `+` and `-` together as you want
 
-I do not know the purpose of this feature but in Python you can write multiple `+` or `-` operators in a row.
+When using multiple `+` or `-` operators in a row, it's as though the operators are replaced with `* (+1)` and `* (-1)` respectively:
 
 ```python
 >>> 1 +++++++ 1
@@ -27,10 +37,7 @@ I do not know the purpose of this feature but in Python you can write multiple `
 2
 ```
 
-The operators behave as if they were shorthands for `* (+1)` and `* (-1)`.
-I do not know of any other language that behaves like this.
-I also do not see any purpose to it.
-
+Please let me know if you know of another programming language that behaves like this or if you know the purpose for it.
 The only use case that I can think of is if you need to ask "help" from a fellow developer to deal with your annoying manager:
 
 ```python
@@ -42,24 +49,26 @@ There is always someone familiar with morse code in movies so it might work.
 # Using multiple `-` with `//` is weird
 
 In case you don't know, the `//` operator performs a division like `/` but instead returns an integer.
-When writing `5 // 3` you are doing the exact same calculation as `math.floor(5 / 3)`.
 
 ```python
->>> 5 // 3
-1
+>>> 5 // 2
+2
+>>> assert 5 // 2 == math.floor(5 / 2)
+True
 ```
 
 Now let's look at this simple calculation using `//`:
 
 ```python
->>> 2 - 5 // 2
-0
+>>> 2 + 5 // 2
+4
 ```
 
-The result is as expected since `5 // 2` is equivalent to `floor(5 / 2)` which is equal to 2.
+Nothing ground breaking here.
+Python calculates `5 // 2` before performing the addition.
 
-According to the previous section, if we use `--` instead of `-`, we should expect a result of 4.
-However here is what we get:
+Let's use the newly discovered feature of Python's arithmetic by replacing `+` with `--`.
+What could go wrong?
 
 ```python
 >>> 2 -- 5 // 2
@@ -70,7 +79,7 @@ What is going on here?
 Is Python broken?
 Are mathematics failing us?
 
-Let's break this down with parentheses to understand what is happening
+Let's break this down to understand what is happening:
 
 ```python
 >>> 2 - (-5 // 2)
@@ -90,13 +99,13 @@ The largest integer less than or equal to `-2.5` is `-3`.
 So the unexpected result of `2 -- 5 // 2` is due to the order of operations in Python.
 
 The [operator precedence in Python](https://docs.python.org/3/reference/expressions.html#operator-precedence) gives the determination of the sign a higher precedence than the `//` operator.
-This is why the sign is applied to `5` before `5 // 2` is performed.
+This is why the negative sign is applied to `5` before `5 // 2` is performed.
 
 Now it's all clear and nothing else will surprise us, right?
 
 # Adding a `+` into the mix is even weirder
 
-Let's now add a `+` sign to our previous example because why not!
+Now let's add a `+` sign to our previous example because why not!
 
 ```python
 >>> 2 +-- 5 // 2
@@ -107,11 +116,11 @@ Let's now add a `+` sign to our previous example because why not!
 5
 ```
 
-Right now might be a good time to open your interpreter and verify that this is for real because you probably don't believe it.
+Right now might be a good time to open your Python interpreter and verify that this is for real because you probably don't believe it.
 
 It's as though the `+` doesn't do anything in `-+-` and `--+` compared to using `--` in the previous section.
 On the other hand the result is different with `+--`.
-Parenthesis can help us here as well:
+Why is that?
 
 ```python
 >>> 2 -- (+ 5 // 2)
@@ -134,6 +143,6 @@ They might give the same result most of the time but at the end the interpreter 
 
 Being able to use multiple `+` and `-` operators in a row is most likely a side effect rather than an intended feature in Python.
 In any case I would strongly recommend to refrain from using this feature, even just for the fun.
-Most of the time it works as is `+` and `-` could be replaced by `* (+1)` and `* (-1)` respectively but at least for the operator `//` this is just not the case.
+Most of the time it works as if `+` and `-` could be replaced by `* (+1)` and `* (-1)` respectively but at least for the operator `//` this is just not the case.
 
 However using this quirk of Python was a nice way to learn and explore the operator precedence!
