@@ -1,4 +1,4 @@
 FROM jekyll/jekyll
 
-COPY Gemfile Gemfile.lock ./
+COPY Gemfile ./
 RUN bundle install
