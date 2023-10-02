@@ -146,3 +146,7 @@ In any case I would strongly recommend to refrain from using this feature, even 
 Most of the time it works as if `+` and `-` could be replaced by `* (+1)` and `* (-1)` respectively but at least for the operator `//` this is just not the case.
 
 However using this quirk of Python was a nice way to learn and explore the operator precedence!
+
+---
+
+*Thank you to [Quinn Blenkinsop](https://github.com/qw-in) for reviewing this post and providing very useful feedback.*
