@@ -123,21 +123,25 @@ On the other hand the result is different with `+--`.
 Why is that?
 
 ```python
->>> 2 -- (+ 5 // 2)
+>>> 2 + ((-(-5)) // 2)
 4
->>> 2 +- (- 5 // 2)
+>>> 2 + ((+5) // 2)
+4
+>>> 2 - ((+(-5)) // 2)
 5
->>> 2 -+ (- 5 // 2)
+>>> 2 - ((-(+5)) // 2)
+5
+>>> 2 - ((-5) // 2)
 5
 ```
 
 Once again the operator precedence clarifies this surprising behavior.
-It is mentioned in the documentation that the operators "group left to right" when they have the same precedence.
-In the case of `+--` this left to right grouping leads to using the first sign on the left as the sign for the quantity following to the right, in our case `5`.
+Except for the most left sign, all the signs are combined and assigned to the value on the right, e.g. 5.
+The most left operator is kept for the addition or subtraction operation.
+Hence why `-+-` and `--+` give identical results.
 
-This is very counter-intuitive!
-It means that `+--` is not equivalent to `* (+1) * (-1) * (-1)`.
-They might give the same result most of the time but at the end the interpreter treats `+--` like signs to be assigned following the operator precedence rules.
+It means that `+--` is not equivalent to `* (+1) * (-1) * (-1)` but instead is equivalent to `+ ((-1) * (-1))`
+The results are the same for the two rewrites of `+--` except with the `floor` function due to its sensitivity to the sign of its argument.
 
 # Never use multiple `+` or `-` operators!
 
