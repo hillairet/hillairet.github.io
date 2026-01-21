@@ -73,9 +73,26 @@ The key is being specific about what you want:
 - **Be clear about the task**: "Polish the text" is vague, "improve grammar, word choice, and sentence structure" is actionable
 - **Set boundaries**: "without making it longer" prevents the AI from going overboard
 - **Specify the output format**: "Return only the polished text" avoids unwanted commentary
-- **Handle formatting quirks**: The bullet point instruction works around clipboard limitations we discussed earlier
+- **Handle formatting quirks**: The bullet point instruction works around clipboard limitations in rich text applications, which we'll cover next
 
 Feel free to customize this for your needs - maybe you want more casual language, or you're working on technical documentation, or you need different formatting rules.
+
+## Caveats with rich text applications
+
+While this approach works great with most applications, there's one gotcha to watch out for: apps that use rich text formatting.
+
+Take Slack, for example.
+When you select text that includes bullet points or other formatting in Slack, the clipboard only gets the plain text version - no bullet points, no formatting.
+So even if Claude adds bullet points to improve your text, when you paste it back into Slack, those bullet points won't render properly and your message will look wonky.
+
+The same issue can happen with other rich text editors like Google Docs, Notion, or any WYSIWYG editor that strips formatting when copying to the system clipboard.
+
+For these apps, you'll want to:
+- Stick to plain text improvements (grammar, word choice, sentence structure)
+- Avoid asking for formatting changes like bullet points or bold text
+- Or use the script in plain text editors first, then copy the result manually
+
+It's not a dealbreaker, just something to keep in mind depending on where you're writing.
 
 # Talking to your AI service with curl and jq
 
@@ -182,23 +199,6 @@ The beauty of this approach is its simplicity:
 No browser extensions, no complex installations, just standard Linux tools working together.
 
 *The complete Polish script is available as a [GitHub Gist](https://gist.github.com/hillairet/polish-script) if you'd like to try this yourself. Feel free to adapt it for your own use cases!*
-
-# Caveats with rich text applications
-
-While this approach works great with most applications, there's one gotcha to watch out for: apps that use rich text formatting.
-
-Take Slack, for example.
-When you select text that includes bullet points or other formatting in Slack, the clipboard only gets the plain text version - no bullet points, no formatting.
-So even if Claude adds bullet points to improve your text, when you paste it back into Slack, those bullet points won't render properly and your message will look wonky.
-
-The same issue can happen with other rich text editors like Google Docs, Notion, or any WYSIWYG editor that strips formatting when copying to the system clipboard.
-
-For these apps, you'll want to:
-- Stick to plain text improvements (grammar, word choice, sentence structure)
-- Avoid asking for formatting changes like bullet points or bold text
-- Or use the script in plain text editors first, then copy the result manually
-
-It's not a dealbreaker, just something to keep in mind depending on where you're writing.
 
 # Beyond text polishing
 
