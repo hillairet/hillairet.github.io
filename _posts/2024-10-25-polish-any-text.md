@@ -99,17 +99,19 @@ It's not a dealbreaker, just something to keep in mind depending on where you're
 Now for the API magic.
 We combine our static prompt with the clipboard content and send it to your AI service of choice.
 
-*I'm using Claude 3.5 Sonnet as an example here, but this approach works with any LLM that provides an HTTP API - OpenAI's GPT models, Anthropic's Claude family, Google's Gemini, or even local services like Ollama.*
+*I'm using Claude Haiku 4.5 as an example here, but this approach works with any LLM that provides an HTTP API - OpenAI's GPT models, other Anthropic Claude models, Google's Gemini, or even local services like Ollama. Each service has its own API format and model names, so you'll need to adapt the request accordingly.*
 
 ```bash
-# Prepare the API request to Claude 3.5
+# Prepare the API request to Claude
 full_prompt="$STATIC_PROMPT$clipboard_content"
 
-# Create properly formatted JSON payload
+# Create a temporary file for the JSON payload
 json_payload=$(mktemp)
+
+# Create properly formatted JSON payload
 cat > "$json_payload" << EOF
 {
-  "model": "claude-3-5-sonnet-20240620",
+  "model": "claude-haiku-4-5-20251001",
   "max_tokens": 1024,
   "messages": [
     {
@@ -126,6 +128,7 @@ response=$(curl -s https://api.anthropic.com/v1/messages \
   -H "content-type: application/json" \
   -d @"$json_payload")
 
+# Clean up the temporary file
 rm "$json_payload"
 ```
 
@@ -137,12 +140,22 @@ This handles any special characters or newlines in your selected text.
 Finally, we extract Claude's response and paste it back:
 
 ```bash
-# Extract Claude's response
+# Extract and display Claude's response
 claude_response=$(echo "$response" | jq -r '.content[0].text' 2>/dev/null)
+
+if [ -z "$claude_response" ]; then
+    echo "Error: Failed to get response from Claude"
+    echo "API response: $response"
+    exit 1
+fi
+
+# Convert literal \n to actual newlines
 processed_response=$(echo -e "$claude_response")
 
-# Copy to clipboard and paste automatically
+# Copy the processed response to both clipboards for easy use
+echo -e "$processed_response" | xclip -selection primary
 echo -e "$processed_response" | xclip -selection clipboard
+
 xdotool key ctrl+v
 ```
 
@@ -211,9 +224,10 @@ The same pattern works for:
 - Grammar checking
 - Style conversion (formal to casual, etc.)
 
-You could even use a local model like Gemma 270M for complete privacy and control - no API keys, no internet required, just pure local processing.
+For those concerned about privacy, you can adapt this approach to use local models with services like Ollama - if you have a sufficiently capable model, you get complete privacy and control without needing API keys or internet access.
 
-The real power lies in combining simple, reliable tools you control into workflows that solve your specific problems.
+The real power lies in keeping it simple: surround an LLM with basic Linux tools and let it do what it does best - process text. The tools handle the plumbing: selecting text, reading the clipboard, triggering the script, and pasting the result back. No complex frameworks, no bloated applications, just straightforward automation that you control.
+
 What will you automate next?
 
 ---
