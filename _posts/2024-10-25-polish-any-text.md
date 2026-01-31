@@ -28,8 +28,8 @@ It can handle Ctrl+c and Ctrl+v for us.
 
 ```bash
 # Get the text to polish from the current selection
-xdotool key ctrl+c
-sleep 0.1  # Small delay to ensure copy completes
+xdotool key --clearmodifiers ctrl+c
+sleep 0.12  # Small delay to ensure copy completes
 ```
 
 This simple command sequence copies whatever text you have selected in any application.
@@ -42,11 +42,14 @@ That's where `xclip` comes in:
 
 ```bash
 # Use xclip to read clipboard content
-clipboard_content=$(xclip -selection clipboard -o 2>/dev/null)
+if ! clipboard_content=$(xclip -selection clipboard -o 2>/dev/null); then
+  echo "Error: Could not read clipboard" >&2
+  exit 1
+fi
 
-if [ $? -ne 0 ] || [ -z "$clipboard_content" ]; then
-    echo "Error: Could not read clipboard or clipboard is empty"
-    exit 1
+if [ -z "$clipboard_content" ]; then
+  echo "Error: Clipboard is empty" >&2
+  exit 1
 fi
 ```
 
@@ -59,14 +62,11 @@ Before we dive into the API magic, let's talk about the `STATIC_PROMPT` variable
 This is where you define exactly what you want the AI to do with your text:
 
 ```bash
-STATIC_PROMPT="You are an expert business writer specialized in drafting and refining professional documents for a software development consulting company.
+STATIC_PROMPT="You are an expert writer.
 Polish the following text by improving grammar, word choice, and sentence structure without making it longer or adding content.
 Return only the polished text with no introduction, explanation, or commentary.
 Use \"-\" for bullet points to make copy-pasting to my text editor and browser simpler.
-Preserve the indentation of the bullet points.
-
-My text:
-"
+Preserve the indentation of the bullet points."
 ```
 
 The key is being specific about what you want:
@@ -97,66 +97,65 @@ It's not a dealbreaker, just something to keep in mind depending on where you're
 # Talking to your AI service with curl and jq
 
 Now for the API magic.
-We combine our static prompt with the clipboard content and send it to your AI service of choice.
+We send the clipboard content as the user message, and the static prompt as a system prompt.
 
 *I'm using Claude Haiku 4.5 as an example here, but this approach works with any LLM that provides an HTTP API - OpenAI's GPT models, other Anthropic Claude models, Google's Gemini, or even local services like Ollama. Each service has its own API format and model names, so you'll need to adapt the request accordingly.*
 
 ```bash
-# Prepare the API request to Claude
-full_prompt="$STATIC_PROMPT$clipboard_content"
-
 # Create a temporary file for the JSON payload
 json_payload=$(mktemp)
+response_file=$(mktemp)
+trap 'rm -f "$json_payload" "$response_file"' EXIT
 
-# Create properly formatted JSON payload
-cat > "$json_payload" << EOF
-{
-  "model": "claude-haiku-4-5-20251001",
-  "max_tokens": 1024,
-  "messages": [
-    {
-      "role": "user",
-      "content": $(printf '%s' "$full_prompt" | jq -Rs .)
-    }
-  ]
-}
-EOF
+# Create properly formatted JSON payload (system prompt + user text)
+jq -n \
+  --arg model "claude-haiku-4-5-20251001" \
+  --arg system "$STATIC_PROMPT" \
+  --arg user "$clipboard_content" \
+  --argjson max_tokens 1024 \
+  '{model: $model, max_tokens: $max_tokens, system: $system, messages: [{role: "user", content: $user}]}' \
+  >"$json_payload"
 
-response=$(curl -s https://api.anthropic.com/v1/messages \
+http_code=$(curl -sS -o "$response_file" -w '%{http_code}' https://api.anthropic.com/v1/messages \
   -H "x-api-key: $ANTHROPIC_API_KEY" \
-  -H "anthropic-version: 2023-06-01" \
-  -H "content-type: application/json" \
+  -H 'anthropic-version: 2023-06-01' \
+  -H 'content-type: application/json' \
   -d @"$json_payload")
 
-# Clean up the temporary file
-rm "$json_payload"
+if [[ "$http_code" != 2* ]]; then
+  error_message=$(jq -r '.error.message? // empty' "$response_file" 2>/dev/null || true)
+  if [[ -n "$error_message" ]]; then
+    echo "Error: Anthropic API request failed ($http_code): $error_message" >&2
+    exit 1
+  fi
+
+  echo "Error: Anthropic API request failed ($http_code)" >&2
+  cat "$response_file" >&2
+  exit 1
+fi
 ```
 
-The key trick here is using `jq -Rs .` to properly escape the text for JSON.
-This handles any special characters or newlines in your selected text.
+The key trick here is letting `jq` build the JSON payload with `--arg`.
+That safely escapes special characters and newlines without fragile manual quoting.
 
 # Putting it all back
 
 Finally, we extract Claude's response and paste it back:
 
 ```bash
-# Extract and display Claude's response
-claude_response=$(echo "$response" | jq -r '.content[0].text' 2>/dev/null)
+# Extract Claude's text and paste it back
+claude_response=$(jq -er '[.content[]? | select(.type == "text") | .text] | join("")' "$response_file" 2>/dev/null || true)
 
 if [ -z "$claude_response" ]; then
-    echo "Error: Failed to get response from Claude"
-    echo "API response: $response"
-    exit 1
+  echo "Error: Failed to parse response from Claude" >&2
+  cat "$response_file" >&2
+  exit 1
 fi
 
-# Convert literal \n to actual newlines
-processed_response=$(echo -e "$claude_response")
+printf '%s' "$claude_response" | xclip -selection primary
+printf '%s' "$claude_response" | xclip -selection clipboard
 
-# Copy the processed response to both clipboards for easy use
-echo -e "$processed_response" | xclip -selection primary
-echo -e "$processed_response" | xclip -selection clipboard
-
-xdotool key ctrl+v
+xdotool key --clearmodifiers ctrl+v
 ```
 
 And that's it!
@@ -186,7 +185,7 @@ Most desktop environments let you bind custom scripts to keyboard shortcuts:
 **i3/sway:**
 Add to your config file:
 ```
-bindsym $mod+p exec /path/to/your/polish-script
+bindsym $mod+p exec /path/to/Polish
 ```
 
 ## Application launcher method
@@ -199,7 +198,7 @@ The script will show up in your launcher if it's in your PATH, and it'll run wit
 **GNOME/KDE launcher:**
 Press `Super`, type "polish", hit enter - your selection stays intact while the script runs.
 
-The key insight is that these methods run the script in the background without changing window focus, so `xdotool key ctrl+c` copies from whatever window you were actually working in.
+The key insight is that these methods run the script in the background without changing window focus, so `xdotool key --clearmodifiers ctrl+c` copies from whatever window you were actually working in.
 
 # The complete workflow
 
